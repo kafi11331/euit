@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Model;
 
 class Batch extends Model
@@ -25,4 +25,14 @@ class Batch extends Model
     {
         return $this->belongsToMany(Mentor::class)->withTimestamps();
     }
+        public function course_type()
+    {
+        return $this->belongsTo(CourseType::class);
+    }
+        public function accounts()
+    {
+        return $this->belongsToMany(Account::class);
+    }
+
+
 }

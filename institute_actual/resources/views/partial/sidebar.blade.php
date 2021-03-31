@@ -147,6 +147,7 @@
                     </ul>
                 </div>
             </li>
+
             <li class="sidebar-list-item">
                 <a href="{{ route('account') }}"
                    class="sidebar-link text-muted ">
@@ -156,12 +157,26 @@
             </li>
 
 
+
+
+
+
+
+
+            @if (Auth::user()->role == 'user')
+
             <li class="sidebar-list-item">
                 <a href="{{ route('daily.report') }}"
-                   class="sidebar-link text-muted ">
+                    class="sidebar-link text-muted ">
                     <i class="fa fa-file text-gray"></i><span>Daily report</span>
                 </a>
             </li>
+            @endif
+
+
+
+
+
 
             @if (Auth::user()->role == 'admin')
 
@@ -222,20 +237,78 @@
                     </div>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="{{route('report.index')}}"
-                       class="sidebar-link text-muted ">
-                        <i class="fa fa-file text-gray"></i><span>Report</span>
-                    </a>
-                </li>
-                 <li class="sidebar-list-item">
                     <a href="{{route('birthday')}}"
                        class="sidebar-link text-muted ">
                         <i class="fa fa-birthday-cake text-gray"></i><span>Birth Day</span>
                     </a>
                 </li>
 
+
+
+
+
+
+
+
+
+
+
+                <li class="sidebar-list-item">
+                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#report"
+                       aria-expanded="false"
+                       aria-controls="report" class="sidebar-link
+                   text-muted">
+                   <i class="fas fa-book text-gray"></i><span>Report</span></a>
+                    <div id="report" class="collapse">
+                        <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+                            <li class="sidebar-list-item">
+                                <a href="{{ route('daily.report') }}"
+                                   class="sidebar-link text-muted ">
+                                    <i class="far fa-id-badge text-gray"></i><span>Daily report</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list-item">
+                                <a href="{{route('report.index')}}"
+                                   class="sidebar-link text-muted">
+                                    <i class="fa fa-file text-gray"></i><span>General Report</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list-item">
+                                 <a href="{{route('summary_report')}}"
+                                   class="sidebar-link text-muted ">
+                                    <i class="fa fa-list-alt" aria-hidden="true"></i><span>Summary Report</span>
+                                 </a>
+                            </li>
+                            <li class="sidebar-list-item">
+                                <a href="{{route('indivisual_report')}}"
+                                  class="sidebar-link text-muted ">
+                                  <i class="fas fa-user-friends"></i><span>Indivisual Report</span>
+                                </a>
+                           </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             @endif
-            
+
             <li class="sidebar-list-item">
                 <a href="javascript:void(0)" data-toggle="collapse" data-target="#marketing"
                    aria-expanded="false"

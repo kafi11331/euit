@@ -12,6 +12,45 @@ Route::get('/ad', function () {
     \App\Models\Account::query()->delete();
 });
 
+
+
+
+
+
+//summary report
+        Route::get('/summary_report' ,'summary_reportController@index')->name('summary_report');
+
+        Route::post('/summary_report/search', 'summary_reportController@summaryReport')->name('summary_report.search');
+
+        Route::get('/summary_report/batch/{bid}/report', 'summary_reportController@reportsByBatch')->name('summary_report.report.batch');
+
+        Route::get('/summary_report/course/{cid}/report', 'summary_reportController@reportsByCourse')->name('summary_report.report.course');
+
+        Route::get('/summary_report/type/{ct}/report', 'summary_reportController@reportsByCourseType')->name('summary_report.report.course_type');
+
+        Route::get('/summary_report/all', 'summary_reportController@all_reports')->name('summary_report.all');
+
+
+
+
+
+
+//indivisual report
+        Route::get('/indivisual_report' ,'Indivisual_reportController@index')->name('indivisual_report');
+
+        Route::post('/indivisual_report/search', 'Indivisual_reportController@indivisual_report')->name('indivisual_report.search');
+
+        Route::get('/indivisual_report/batch/{bid}/report', 'Indivisual_reportController@reportsByBatch')->name('indivisual_report.report.batch');
+
+        Route::get('/indivisual_report/course/{cid}/report', 'Indivisual_reportController@reportsByCourse')->name('indivisual_report.report.course');
+
+        Route::get('/indivisual_report/type/{ct}/report', 'Indivisual_reportController@reportsByCourseType')->name('indivisual_report.report.course_type');
+
+        Route::get('/indivisual_report/all', 'Indivisual_reportController@all_reports')->name('indivisual_report.all');
+
+
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
@@ -227,7 +266,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/marketing-not-interested/search', 'MarketingController@notInterestedSearch')->name('marketing.notInterested.search');
     Route::post('/marketing-admitted/search', 'MarketingController@admittedSearch')->name('marketing.admitted.search');
     Route::get('/marketing/today-conversation-list', 'MarketingController@today')->name('marketing.list.today');
-    
+
     Route::post('/sms-student-institute/{iid}', 'ReportController@instituteSms')->name('sms.student.institute');
     Route::post('/sms-student-institute/{iid}/due', 'ReportController@instituteSmsDue')->name('sms.student.institute.due');
 
